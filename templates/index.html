@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make Song From Photo</title>
+  <link href="/static/style.css" rel="stylesheet" >
+</head>
+<body>
+
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<div class="file-upload">
+  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+  <div class="image-upload-wrap">
+    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+    <div class="drag-text">
+      <h3>Drag and drop a file or select add Image</h3>
+    </div>
+  </div>
+
+    <div class="image-upload-wrap">
+    <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
+    <label for="file-upload" id="file-drag" class="upload-box">
+      <div id="upload-caption">Drop image here or click to select</div>
+      <img id="image-preview" class="hidden" />
+    </label>
+  </div>
+
+  <div class="file-upload-content">
+    <img class="file-upload-image" src="#" alt="your image" />
+    <div class="image-title-wrap">
+      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="title">
+    <h3>Let's Make Song with Photo</h3>
+  </div>
+
+  <div class="panel">
+    <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
+    <label for="file-upload" id="file-drag" class="upload-box">
+      <div id="upload-caption">Drop image here or click to select</div>
+      <img id="image-preview" class="hidden" />
+    </label>
+  </div>
+  <div style="margin-bottom: 2rem;">
+    <input type="button" value="Submit" class="button" onclick="submitImage();" />
+    <input type="button" value="Clear" class="button" onclick="clearImage();" />
+  </div>
+
+  <div id="image-box">
+    <img id="image-display" />
+    <div id="pred-result" class="hidden"></div>
+    <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
+  </div>
+</div>
+
+
+</body>
+<script>
+ function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('.image-upload-wrap').hide();
+
+      $('.file-upload-image').attr('src', e.target.result);
+      $('.file-upload-content').show();
+
+      $('.image-title').html(input.files[0].name);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+}
+$('.image-upload-wrap').bind('dragover', function () {
+		$('.image-upload-wrap').addClass('image-dropping');
+	});
+	$('.image-upload-wrap').bind('dragleave', function () {
+		$('.image-upload-wrap').removeClass('image-dropping');
+});
+
+</script>
+<!--Copyright (c) 2022 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+</html>
