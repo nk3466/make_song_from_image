@@ -1,5 +1,13 @@
 from flask import Flask, render_template, request
+# from flask_restful import reqparse
+import werkzeug
 from werkzeug.utils import secure_filename
+from PIL import Image
+
+from image_captioning_prediction import predict
+
+
+
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 
@@ -7,11 +15,21 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 def index():
     return render_template('index.html')
 
-@app.route('/photo_to_song',methods=['POST'])
+
+@app.route('/photo_to_song', methods=['POST'])
 def post():
-	value = dict(request.form)
-	print(value)
-	return value
+    # 사진 저장
+    files = request.files
+    file = files.get('photo_real')
+    file.save('image/' + file.filename)
+    photo_name = request.form['photo'].split("\\")[-1]
+
+    make_sentence_from_photo = predict(photo_name)
+    make_sentence_from_photo_final = make_sentence_from_photo.split("<")[0]
+    print(make_sentence_from_photo_final)
+    return make_sentence_from_photo_final
+
+
 #         root_path()
 #         # Reference Image
 #         refer_img = request.form['refer_img']

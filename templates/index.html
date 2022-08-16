@@ -13,13 +13,14 @@
         <h3>Let's Make Song with Photo</h3>
     </div>
 </div>
-<form id = 'addForm'>
+<form id='addForm'>
     <div class="file-upload">
         {#    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image#}
         {#    </button>#}
 
         <div class="image-upload-wrap">
-            <input class="file-upload-input" name="photo" id="photo" type='file' onchange="readURL(this);" accept="image/*"/>
+            <input class="file-upload-input" name="photo" id="photo" type='file' onchange="readURL(this);"
+                   accept="image/*"/>
             <div class="drag-text">
                 <h3>Drag and drop a file or select add Image</h3>
             </div>
@@ -35,32 +36,32 @@
             <div style="margin-bottom: 2rem;">
                 <input type="text" name="sentence" id="sentence" class="button">
                 <input type="button" value="Submit" class="button" onclick="submitImage();"/>
-                {#        <input type="button" value="Clear" class="button" onclick="clearImage();"/>#}
+            </div>
             </div>
         </div>
     </div>
 </form>
 
-    <div class="main">
+<div class="main">
 
-        {#    <div class="panel">#}
-        {#        <input id="file-upload" class="hidden" type="file" onchange="readURL(this);"#}
-        {#               accept="image/x-png,image/gif,image/jpeg"/>#}
-        {#        <label for="file-upload" id="file-drag" class="upload-box">#}
-        {#            <div id="upload-caption">Drop image here or click to select</div>#}
-        {#            <img id="image-preview"/>#}
-        {#        </label>#}
-        {#    </div>#}
+    {#    <div class="panel">#}
+    {#        <input id="file-upload" class="hidden" type="file" onchange="readURL(this);"#}
+    {#               accept="image/x-png,image/gif,image/jpeg"/>#}
+    {#        <label for="file-upload" id="file-drag" class="upload-box">#}
+    {#            <div id="upload-caption">Drop image here or click to select</div>#}
+    {#            <img id="image-preview"/>#}
+    {#        </label>#}
+    {#    </div>#}
 
 
-        <div id="image-box">
-            <img id="image-display"/>
-            <div id="pred-result" class="hidden"></div>
-            <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
-                <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
-            </svg>
-        </div>
+    <div id="image-box">
+        <img id="image-display"/>
+        <div id="pred-result" class="hidden"></div>
+        <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
+            <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+        </svg>
     </div>
+</div>
 
 
 </body>
@@ -100,18 +101,30 @@
     });
 
     function submitImage() {
-        var data = new FormData($("#addForm")[0]);
+        var fileInput = document.querySelector("#photo");
+        var form = new FormData();
+        console.log(fileInput.files[0])
+        form.append('photo', $('#addForm input[name="photo"]').val());
+        form.append('photo_real', fileInput.files[0]);
+        form.append('sentence', $('#addForm input[name="sentence"]').val());
+        for (var pair of form.entries()) {
+            console.log(pair[0] + ', ' + pair[1]);
+        }
         $.ajax({
             url: "photo_to_song",
-            data: data,
+            data: form,
             processData: false,
             contentType: false,
             enctype: 'multipart/form-data',
             type: 'post',
-            success:function(data,status,xhr){
+            success: function (data, status, xhr) {
+                if (status == 200){
+                    console.log(data)
+                    $("label#success-message").text("와우");
+                }
 
             },
-            error: function(xhr,status,error){
+            error: function (xhr, status, error) {
 
             }
         })
@@ -139,7 +152,6 @@
     {#        contentType: false,#}
     {#        processData: false#}
     {#    });#}
-    {#    출처: https://sdpark.tistory.com/55 [개는 발이 넷이다.:티스토리]#}
 
 </script>
 <!--Copyright (c) 2022 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)-->
