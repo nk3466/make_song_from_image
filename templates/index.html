@@ -34,7 +34,11 @@
         </div>
         <div class='main'>
             <div style="margin-bottom: 2rem;">
-                <input type="text" name="sentence" id="sentence" class="button">
+                <select name="genre">
+                    <option value="trot">트로트</option>
+                    <option value="ballad">발라드</option>
+                    <option value="rap-hip-pop">랩/힙합</option>
+                </select>
                 <input type="button" value="Submit" class="button" onclick="submitImage();"/>
             </div>
             </div>
@@ -106,7 +110,7 @@
         console.log(fileInput.files[0])
         form.append('photo', $('#addForm input[name="photo"]').val());
         form.append('photo_real', fileInput.files[0]);
-        form.append('sentence', $('#addForm input[name="sentence"]').val());
+        form.append('genre', $('#addForm select[name = "genre"]').val());
         for (var pair of form.entries()) {
             console.log(pair[0] + ', ' + pair[1]);
         }

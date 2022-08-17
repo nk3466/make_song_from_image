@@ -93,7 +93,7 @@ def plot_attention(image, result, attention_plot):
         ax.imshow(temp_att, cmap='gray', alpha=0.6, extent=img.get_extent())  # show original image with attention_plot
 
     plt.tight_layout()
-    plt.show()
+    # plt.show()
 
 
 def predict(file_name):

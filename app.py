@@ -5,8 +5,7 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 
 from image_captioning_prediction import predict
-
-
+from papagoApi import get_translate
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
@@ -23,11 +22,14 @@ def post():
     file = files.get('photo_real')
     file.save('image/' + file.filename)
     photo_name = request.form['photo'].split("\\")[-1]
-
+    print(request.form)
     make_sentence_from_photo = predict(photo_name)
     make_sentence_from_photo_final = make_sentence_from_photo.split("<")[0]
     print(make_sentence_from_photo_final)
-    return make_sentence_from_photo_final
+    kor_sentence = get_translate(make_sentence_from_photo_final)
+    print('번역' + kor_sentence)
+    result = ''
+    return result
 
 
 #         root_path()
