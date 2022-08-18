@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Make Song From Photo</title>
-    <link href="static/index_style.css" rel="stylesheet">
+    <link href="static/result_style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -13,61 +13,42 @@
         <h3>Let's Make Instagram Feed with Photo</h3>
     </div>
 </div>
-<form id='addForm'>
-    <div class="file-upload">
+{#<form id='addForm'>#}
+{#    <div class="file-upload">#}
         {#    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image#}
         {#    </button>#}
-
-        <div class="image-upload-wrap">
-            <input class="file-upload-input" name="photo" id="photo" type='file' onchange="readURL(this);"
-                   accept="image/*"/>
-            <div class="drag-text">
-                <h3>Drag and drop a file or select add Image</h3>
-            </div>
-        </div>
-
-        <div class="file-upload-content">
-            <img class="file-upload-image" src="#" alt="your image"/>
-            <div class="image-title-wrap">
-                <button type="button" onclick="removeUpload()" class="remove-image">Remove</button>
+{##}
+{#        <div class="image-upload-wrap">#}
+{#            <input class="file-upload-input" name="photo" id="photo" type='file' onchange="readURL(this);"#}
+{#                   accept="image/*"/>#}
+{#            <div class="drag-text">#}
+{#                <h3>Drag and drop a file or select add Image</h3>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <div class="file-upload-content">#}
+{#            <img class="file-upload-image" src="#" alt="your image"/>#}
+{#            <div class="image-title-wrap">#}
+{#                <button type="button" onclick="removeUpload()" class="remove-image">Remove</button>#}
 {#                <input type="button" value="Submit" class="button" onclick="submitImage();"/>#}
-            </div>
-        </div>
-        <div class='main'>
-            <div>
+{#            </div>#}
+{#        </div>#}
+{#        <div class='main'>#}
+{#            <div>#}
 {#                <select name="genre">#}
 {#                    <option value="trot">트로트</option>#}
 {#                    <option value="ballad">발라드</option>#}
 {#                    <option value="rap-hip-pop">랩/힙합</option>#}
 {#                </select>#}
-                <input type="button" value="Submit" class="button" onclick="submitImage();"/>
-            </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-<div class="main">
-
-    {#    <div class="panel">#}
-    {#        <input id="file-upload" class="hidden" type="file" onchange="readURL(this);"#}
-    {#               accept="image/x-png,image/gif,image/jpeg"/>#}
-    {#        <label for="file-upload" id="file-drag" class="upload-box">#}
-    {#            <div id="upload-caption">Drop image here or click to select</div>#}
-    {#            <img id="image-preview"/>#}
-    {#        </label>#}
-    {#    </div>#}
-
-
-    <div id="image-box">
-        <img id="image-display"/>
-        <div id="pred-result" class="hidden"></div>
-        <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
-            <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
-        </svg>
-    </div>
+{#                <input type="button" value="Submit" class="button" onclick="submitImage();"/>#}
+{#            </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</form>#}
+<div>
+    <input type="text">
 </div>
-
 
 </body>
 <script>
@@ -127,6 +108,7 @@
                 console.log(data);
                 let url = '/result'
                 window.location.href = url
+
             },
             error: function (xhr, status, error) {
 

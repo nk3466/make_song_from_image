@@ -6,6 +6,7 @@ import werkzeug
 from werkzeug.utils import secure_filename
 from PIL import Image
 
+from gpt2 import inference
 from image_captioning_prediction import predict
 from papagoApi import get_translate
 
@@ -33,10 +34,14 @@ def post():
 
     kor_sentence = get_translate(make_sentence_from_photo_final)
     print('번역' + kor_sentence)
-    result = ''
+    result = inference(kor_sentence)
+
     print(time.time() - start)
     return result
 
+@app.route('/result', methods=['GET'])
+def result():
+    return render_template('result.html')
 
 #         root_path()
 #         # Reference Image

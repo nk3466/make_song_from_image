@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
   background-color: #eeeeee;
+  /*background-image: url('insta_start.png');*/
 }
 
 .file-upload {
@@ -152,7 +153,7 @@ body {
   font-size: 1rem;
   min-width: 6rem;
   position: absolute;
-  left: 1157px;
+  left: 1650px;
   top: 552px;
 }
 
