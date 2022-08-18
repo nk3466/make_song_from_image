@@ -1,3 +1,5 @@
+import time
+
 from flask import Flask, render_template, request
 # from flask_restful import reqparse
 import werkzeug
@@ -18,17 +20,21 @@ def index():
 @app.route('/photo_to_song', methods=['POST'])
 def post():
     # 사진 저장
+    start = time.time()
     files = request.files
     file = files.get('photo_real')
     file.save('image/' + file.filename)
     photo_name = request.form['photo'].split("\\")[-1]
     print(request.form)
+
     make_sentence_from_photo = predict(photo_name)
     make_sentence_from_photo_final = make_sentence_from_photo.split("<")[0]
     print(make_sentence_from_photo_final)
+
     kor_sentence = get_translate(make_sentence_from_photo_final)
     print('번역' + kor_sentence)
     result = ''
+    print(time.time() - start)
     return result
 
 

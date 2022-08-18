@@ -5,6 +5,14 @@ body {
 
 .file-upload {
   background-color: #ffffff;
+  width: 500px;
+  height: 800px;
+  margin: 0 auto;
+  background-image: url('insta_start.png');
+  background-size: cover;
+}
+.insta_back{
+  background-color: #ffffff;
   width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -47,17 +55,23 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  height: 278px;
   outline: none;
   opacity: 0;
   cursor: pointer;
+  left: 0px;
+  top: 0px;
 }
 
 .image-upload-wrap {
-  margin-top: 20px;
+  margin-top: 517px;
   border: 4px dashed #1FB264;
-  position: relative;
+  background-color: white;
+  position: absolute;
+  height: 275px;
+  width: 493px;
 }
+
 
 .image-dropping,
 .image-upload-wrap:hover {
@@ -82,10 +96,10 @@ body {
 }
 
 .file-upload-image {
-  max-height: 200px;
-  max-width: 200px;
-  margin: auto;
-  padding: 20px;
+  margin-top: 95px;
+  width: 398px;
+  height: 369px;
+  object-fit: contain;
 }
 
 .remove-image {
@@ -137,12 +151,17 @@ body {
   border-radius: 2px;
   font-size: 1rem;
   min-width: 6rem;
+  position: absolute;
+  left: 1157px;
+  top: 552px;
 }
 
 .button:hover {
   background-color: rgb(16, 110, 190);
 }
-
+.drag-text{
+  margin-top: 68px;
+}
 .button.disabled {
   pointer-events: none;
   background-color: #cccccc;
