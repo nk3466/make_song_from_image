@@ -98,7 +98,7 @@ def plot_attention(image, result, attention_plot):
 
 def predict(file_name):
     # test_image_path = os.getcwd() + '.\\test_images\\jango.jpg'  # test_images폴더 생성후 이미지 저장
-    test_image_path1 = os.getcwd() + '\\image\\' + file_name
+    test_image_path1 = os.getcwd()+'\\' + file_name
     print(test_image_path1)
     # encoder_load = tf.keras.models.load_model('my_encoder')
     # decoder_load = tf.keras.models.load_model('my_decoder'),

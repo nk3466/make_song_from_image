@@ -1,6 +1,6 @@
 import time
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify, make_response
 # from flask_restful import reqparse
 import werkzeug
 from werkzeug.utils import secure_filename
@@ -19,44 +19,29 @@ def index():
 
 
 @app.route('/photo_to_song', methods=['POST'])
-def post():
-    # 사진 저장
+def result():
     start = time.time()
-    files = request.files
-    file = files.get('photo_real')
-    file.save('image/' + file.filename)
-    photo_name = request.form['photo'].split("\\")[-1]
-    print(request.form)
+    # 파일 저장
+    file = request.files['photo_real']
+    filename = secure_filename(file.filename)
+    file.save('static/image/' + filename)
 
-    make_sentence_from_photo = predict(photo_name)
+    # image_captioning
+    make_sentence_from_photo = predict('static\\image\\' + filename)
     make_sentence_from_photo_final = make_sentence_from_photo.split("<")[0]
     print(make_sentence_from_photo_final)
 
+    #ko-gpt
     kor_sentence = get_translate(make_sentence_from_photo_final)
-    print('번역' + kor_sentence)
+    print('번역:' + kor_sentence)
     result = inference(kor_sentence)
-
     print(time.time() - start)
-    return result
 
-@app.route('/result', methods=['GET'])
-def result():
-    return render_template('result.html')
+    data = {'result': result}
+    return jsonify(data)
 
-#         root_path()
-#         # Reference Image
-#         refer_img = request.form['refer_img']
-#         refer_img_path = '/images/nst_get/' + str(refer_img)
-#
-#         # User Image (target image)
-#         user_img = request.files['user_img']
-#         user_img.save('./flask_deep/static/images/' + str(user_img.filename))
-#         user_img_path = '/images/' + str(user_img.filename)
-#
-#         # Neural Style Transfer
-#         transfer_img = neural_style_transfer.main(refer_img_path, user_img_path)
-#         transfer_img_path = '/images/' + str(transfer_img.split('/')[-1])
-#     return render_template('index.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

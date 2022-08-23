@@ -13,10 +13,17 @@
         <h3>Let's Make Instagram Feed with Photo</h3>
     </div>
 </div>
-{#<form id='addForm'>#}
-{#    <div class="file-upload">#}
-        {#    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image#}
-        {#    </button>#}
+<form id='addForm'>
+    <div class="file-upload">
+        <div style="color:blue; background-color:red; padding:20px;height: 26px;width: 27px;left: 925px;top: 189px;position: absolute;">
+            <img class="file-upload-image" src="{{img}}" alt="your image"/>
+        </div>
+        <div style="color: black; font-size: 20px; background-color:red; padding:20px;height: 224px;width: 354px;left: 1000px;top: 189px;position: absolute;">
+            <div>{{result}}</div>
+        </div>
+
+{#            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image#}
+{#            </button>#}
 {##}
 {#        <div class="image-upload-wrap">#}
 {#            <input class="file-upload-input" name="photo" id="photo" type='file' onchange="readURL(this);"#}
@@ -44,11 +51,9 @@
 {#            </div>#}
 {#            </div>#}
 {#        </div>#}
-{#    </div>#}
-{#</form>#}
-<div>
-    <input type="text">
-</div>
+    </div>
+</form>
+
 
 </body>
 <script>
