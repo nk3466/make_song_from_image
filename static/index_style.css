@@ -9,7 +9,7 @@ body {
     width: 1282px;
     height: 2500px;
     margin: 0 auto;
-    background-image: url('insta_start.jpg');
+    background-image: url('insta_start1.jpg');
     background-size: cover;
 }
 
@@ -89,6 +89,7 @@ body {
 
 .drag-text {
     text-align: center;
+    font-size: 50px;
 }
 
 .drag-text h3 {
@@ -241,9 +242,11 @@ body {
     padding: 20px;
     height: 390px;
     width: 1240px;
-    top: 117px;
+    top: 144px;
     position: relative;
-    font-size: 40px;
+    font-size: 47px;
+    line-height: 80px;
+    letter-spacing: -3px;
 }
 
 #image-result {

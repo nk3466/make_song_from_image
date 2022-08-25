@@ -10,7 +10,7 @@ def inference(ko_sentence):
     text = ko_sentence
     input_ids = tokenizer.encode(text)
     gen_ids = model.generate(torch.tensor([input_ids]),
-                               max_length=128,
+                               max_length=80,
                                repetition_penalty=2.0,
                                pad_token_id=tokenizer.pad_token_id,
                                eos_token_id=tokenizer.eos_token_id,

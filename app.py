@@ -8,6 +8,7 @@ from PIL import Image
 
 from gpt2 import inference
 from image_captioning_prediction import predict
+from make_tag import make_tag
 from papagoApi import get_translate
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -31,17 +32,21 @@ def result():
     make_sentence_from_photo_final = make_sentence_from_photo.split("<")[0]
     print(make_sentence_from_photo_final)
 
-    #ko-gpt
-    kor_sentence = get_translate(make_sentence_from_photo_final)
+    # 태그 추출
+    tag = make_tag(make_sentence_from_photo_final)
+
+    #파파고 api
+    kor_sentence = get_translate(make_sentence_from_photo_final+'.')
     print('번역:' + kor_sentence)
     result = inference(kor_sentence)
     print(time.time() - start)
 
-    data = {'result': result}
+
+    data = {'result': result, 'tag' : tag}
     return jsonify(data)
 
 
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5005)
