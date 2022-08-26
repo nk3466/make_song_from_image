@@ -37,7 +37,7 @@ def make_tag(prediction_result):
     tags_string = ""
     for x in result_keywords:
         print(x)
-    for keyword in result_keywords:
-        tags_string += "#" + str(get_translate(keyword)).strip('.') + " "
+    for keyword in result_keywords[:5]:
+        tags_string += "#" + str(get_translate(keyword)).strip('.').replace(" ", "") + " "
     print("tag" + tags_string)
     return tags_string

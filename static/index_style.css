@@ -7,9 +7,9 @@ body {
 .file-upload {
     background-color: #ffffff;
     width: 1282px;
-    height: 2500px;
+    height: 2721px;
     margin: 0 auto;
-    background-image: url('insta_start1.jpg');
+    background-image: url('insta_start.jpg');
     background-size: cover;
 }
 
@@ -102,7 +102,7 @@ body {
 .file-upload-image {
     margin-top: 416px;
     width: 1240px;
-    height: 1283px;
+    height: 1288px;
 
 }
 
@@ -236,17 +236,44 @@ body {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
-.file-upload-result {
+.file-upload-result_id {
     color: black;
     font-size: 20px;
-    padding: 20px;
-    height: 390px;
+    padding: 54px;
     width: 1240px;
-    top: 144px;
+    top: 54px;
     position: relative;
     font-size: 47px;
     line-height: 80px;
     letter-spacing: -3px;
+}
+
+.file-upload-result_caption {
+    color: black;
+    font-size: 20px;
+    height: 390px;
+    width: 1145px;
+    top: -38px;
+    position: relative;
+    font-size: 47px;
+    line-height: 80px;
+    letter-spacing: -3px;
+    margin-left: 53px;
+    text-align: justify;
+}
+
+.file-upload-result_tag {
+    font-size: 20px;
+    padding: 22px;
+    height: 390px;
+    width: 1145px;
+    top: 16px;
+    position: relative;
+    font-size: 47px;
+    line-height: 80px;
+    letter-spacing: 0px;
+    margin-left: 40px;
+    color: darkblue;
 }
 
 #image-result {
